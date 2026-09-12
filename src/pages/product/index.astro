@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const products = await getCollection('product');
+---
+
+<BaseLayout title="Products">
+  <h1>Products</h1>
+
+  <ul>
+    {products.map((product) => (
+      <li>
+        <a href={`/product/${product.id}`}>
+          {product.data.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

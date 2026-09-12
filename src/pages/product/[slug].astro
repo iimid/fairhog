@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('product');
+
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+---
+
+<BaseLayout
+  title={product.data.title}
+  description={product.data.description}
+>
+<article>
+  {product.data.image && (
+    <img
+      src={product.data.image}
+      alt={product.data.title}
+      class="product-image"
+    />
+  )}
+
+  <Content />
+</article>
+
+<style>
+  .product-image {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto 60px;
+    border-radius: 16px;
+  }
+</style>
+</BaseLayout>
