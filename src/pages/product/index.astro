@@ -3,15 +3,18 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const products = await getCollection('product');
+const englishProducts = products.filter((product) =>
+  product.id.startsWith('en/')
+);
 ---
 
 <BaseLayout title="Products">
   <h1>Products</h1>
 
   <ul>
-    {products.map((product) => (
+    {englishProducts.map((product) => (
       <li>
-        <a href={`/product/${product.id}`}>
+        <a href={`/product/${product.id.replace(/^en\//, '')}`}>
           {product.data.title}
         </a>
       </li>

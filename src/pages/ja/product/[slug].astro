@@ -1,15 +1,15 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const products = await getCollection('product');
 
   return products
-    .filter((product) => product.id.startsWith('en/'))
+    .filter((product) => product.id.startsWith('ja/'))
     .map((product) => ({
       params: {
-        slug: product.id.replace(/^en\//, ''),
+        slug: product.id.replace(/^ja\//, ''),
       },
       props: { product },
     }));

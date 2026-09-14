@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const products = await getCollection('product');
+const japaneseProducts = products.filter((product) =>
+  product.id.startsWith('ja/')
+);
+---
+
+<BaseLayout title="製品">
+  <h1>製品</h1>
+
+  <ul>
+    {japaneseProducts.map((product) => (
+      <li>
+        <a href={`/ja/product/${product.id.replace(/^ja\//, '')}`}>
+          {product.data.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

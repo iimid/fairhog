@@ -5,9 +5,13 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isJapanese = pathname === "/ja" || pathname.startsWith("/ja/");
+const productsHref = isJapanese ? "/ja/product/" : "/product/";
 ---
 
-<html lang="en-US">
+<html lang={isJapanese ? "ja" : "en-US"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -107,77 +111,67 @@ const { title, description } = Astro.props;
         border-collapse: collapse;
         margin: 24px 0 48px;
         font-size: 0.95rem;
-        }
+      }
 
-        :global(th),
-        :global(td) {
+      :global(th),
+      :global(td) {
         padding: 14px 16px;
         text-align: left;
         border-bottom: 1px solid #e5e5e2;
-        }
+      }
 
-        :global(th) {
+      :global(th) {
         font-weight: 600;
         color: #222;
         background: #f1f1ef;
-        }
+      }
 
-        :global(td) {
+      :global(td) {
         color: #555;
-        }
+      }
 
-@media (max-width: 600px) {
-  :global(table) {
-    font-size: 0.9rem;
-  }
+      :global(article img) {
+        max-width: 100%;
+        height: auto;
+      }
 
-  :global(th),
-  :global(td) {
-    padding: 11px 10px;
-  }
-}
+      :global(article p:has(img)) {
+        margin: 32px 0 48px;
+      }
 
-    :global(article img) {
-    max-width: 100%;
-    height: auto;
-    }
+      :global(article p:has(img) img) {
+        display: block;
+        margin: 0 auto;
+      }
 
-    :global(article p:has(img)) {
-    margin: 32px 0 48px;
-    }
+      :global(.product-photo) {
+        width: 100%;
+        max-width: 560px;
+        margin: 0 auto;
+      }
 
-    :global(article p:has(img) img) {
-    display: block;
-    margin: 0 auto;
-    }
+      :global(.pin-diagram) {
+        width: 100%;
+        max-width: 2000px;
+        margin: 32px auto 48px;
+      }
 
-    :global(.product-photo) {
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-    }
+      :global(.bom) {
+        width: 80%;
+        max-width: 850px;
+        margin: 32px auto 48px;
+      }
 
-    :global(.pin-diagram) {
-    width: 100%;
-    max-width: 2000px;
-    margin: 32px auto 48px;
-    }
+      :global(.color-box) {
+        display: inline-block;
+        width: 100px;
+        height: 22px;
+        border: 1px solid #666;
+      }
 
-    :global(.bom) {
-    width: 80%;
-    max-width: 850px;
-    margin: 32px auto 48px;
-    }
-
-:global(.color-box) {
- display: inline-block;
- width: 100px;
- height: 22px;
- border: 1px solid #666;
-}
-:global(.aquamarine) {
- background-color: #7FFFC4;
-}
+      :global(.aquamarine) {
+        background-color: #7fffc4;
+      }
 
       footer {
         border-top: 1px solid #e5e5e2;
@@ -198,6 +192,15 @@ const { title, description } = Astro.props;
         main {
           padding: 55px 0 80px;
         }
+
+        :global(table) {
+          font-size: 0.9rem;
+        }
+
+        :global(th),
+        :global(td) {
+          padding: 11px 10px;
+        }
       }
     </style>
   </head>
@@ -208,7 +211,9 @@ const { title, description } = Astro.props;
 
       <nav>
         <a href="/">Home</a>
-        <a href="/product/">Products</a>
+        <a href={productsHref}>
+          {isJapanese ? "製品" : "Products"}
+        </a>
       </nav>
     </header>
 
