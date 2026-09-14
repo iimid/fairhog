@@ -1,17 +1,76 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="FAIRHOG" description="Electronic products for embedded systems.">
+  <section class="hero">
+    <h1>Electronic products<br />for embedded systems.</h1>
+
+    <p class="lead">
+      We develop compact electronic products, development boards,
+      and tools for embedded systems.
+    </p>
+
+    <a class="button" href="/product/">View Products</a>
+  </section>
+
+  <section>
+    <h2>Products</h2>
+
+    <p>
+      Our products are designed with a focus on simplicity,
+      compactness, and practical usability.
+    </p>
+
+    <a href="/product/">View all products →</a>
+  </section>
+
+  <section>
+    <h2>About us</h2>
+
+    <p>
+      Based in Tokyo, Japan.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 60px 0 120px;
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #777;
+  }
+
+  h1 {
+    max-width: 800px;
+  }
+
+  .lead {
+    max-width: 650px;
+    font-size: 1.2rem;
+    margin: 32px 0;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #171717;
+    color: white;
+    text-decoration: none;
+  }
+
+  section:not(.hero) {
+    max-width: 750px;
+    margin: 0 auto 80px;
+  }
+
+  section:not(.hero) h2 {
+    margin-top: 0;
+  }
+</style>
