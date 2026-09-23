@@ -179,6 +179,20 @@ const productsHref = isJapanese ? "/ja/product/" : "/product/";
         background-color: #7fffc4;
       }
 
+:global(.video) {
+  display: block;
+  width: 80%;
+  max-width: 560px;
+  height: auto;
+  margin: 32px auto 48px;
+}
+
+@media (max-width: 600px) {
+  :global(.product-video) {
+    width: 75%;
+  }
+}
+
       footer {
         border-top: 1px solid #e5e5e2;
         padding: 32px 5vw;
