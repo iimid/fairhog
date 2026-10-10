@@ -193,6 +193,33 @@ const productsHref = isJapanese ? "/ja/product/" : "/product/";
   }
 }
 
+
+:global(.photo-gallery) {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 8px 0 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+:global(.photo-gallery img) {
+  flex: 0 0 80%;
+  width: 80%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+  scroll-snap-align: center;
+  border-radius: 8px;
+}
+
+@media (min-width: 900px) {
+  :global(.photo-gallery img) {
+    flex-basis: 45%;
+    width: 45%;
+  }
+}
+
       footer {
         border-top: 1px solid #e5e5e2;
         padding: 32px 5vw;
