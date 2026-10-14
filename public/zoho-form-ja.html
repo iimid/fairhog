@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせフォーム</title>
+<style>
+  body { margin: 0; padding: 16px; font-family: Arial, "Hiragino Sans", "Noto Sans JP", sans-serif; font-size: 14px; color: #000; background: #fff; }
+  form { max-width: 600px; margin: 0 auto; }
+  h1 { font-size: 16px; margin: 0 0 16px; }
+  label { display: block; margin: 14px 0 4px; font-weight: bold; }
+  .req { color: #d33; }
+  input[type="text"], input[type="email"], textarea {
+    box-sizing: border-box; width: 100%; padding: 8px;
+    border: 1px solid #ccc; border-radius: 4px; font: inherit;
+  }
+  textarea { height: 10em; resize: vertical; }
+  .buttons { margin-top: 18px; text-align: center; }
+  button { padding: 8px 24px; font: inherit; cursor: pointer; }
+</style>
+</head>
+<body>
+<form name="zsWebToCase_9813000000277002" id="zsWebToCase_9813000000277002"
+      action="https://desk.zoho.jp/support/WebToCase" method="POST"
+      enctype="multipart/form-data" target="_top">
+
+  <input type="hidden" name="xnQsjsdp" value="edbsn6f20df28e4fb02b6ffc19fc13493a2fe">
+  <input type="hidden" name="xmIwtLD" value="edbsn36ddd9cd62f2df6a83f083e64f45ae1dbdc6a99d97708921fce751571868f3b5">
+  <input type="hidden" name="xJdfEaS" value="">
+  <input type="hidden" name="actionType" value="Q2FzZXM=">
+  <input type="hidden" name="returnURL" value="https://fairhog.com/jp/contact">
+
+  <h1>お問い合わせフォーム</h1>
+
+  <label for="f-name">名前 <span class="req">*</span></label>
+  <input type="text" id="f-name" name="Contact Name" maxlength="120" required>
+
+  <label for="f-email">メールアドレス <span class="req">*</span></label>
+  <input type="email" id="f-email" name="Email" maxlength="120" required>
+
+  <label for="f-subject">件名 <span class="req">*</span></label>
+  <input type="text" id="f-subject" name="Subject" maxlength="255" required>
+
+  <label for="f-desc">内容</label>
+  <textarea id="f-desc" name="Description" maxlength="3000"></textarea>
+
+  <div class="buttons">
+    <button type="submit">送る</button>
+    <button type="reset">クリア</button>
+  </div>
+</form>
+</body>
+</html>
