@@ -1,0 +1,31 @@
+---
+// src/layouts/Accordion.astro
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<details class="group border border-gray-200 rounded-lg bg-white overflow-hidden transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+  <!-- タイトル部分 -->
+  <summary class="flex justify-between items-center p-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50 list-none select-none">
+    <span>{title}</span>
+    
+    <!-- 右側のアイコン（開閉で回転する矢印） -->
+    <svg
+      class="w-5 h-5 text-gray-500 transition-transform duration-300 group-open:rotate-180"
+      xmlns="http://w3.org"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </summary>
+
+  <!-- コンテンツ部分 -->
+  <div class="border-t border-gray-100 p-4 text-gray-600 bg-gray-50/50">
+    <slot />
+  </div>
+</details>
