@@ -193,7 +193,6 @@ const productsHref = isJapanese ? "/ja/product/" : "/product/";
   }
 }
 
-
 :global(.photo-gallery) {
   display: flex;
   gap: 16px;
@@ -211,6 +210,18 @@ const productsHref = isJapanese ? "/ja/product/" : "/product/";
   object-fit: contain;
   scroll-snap-align: center;
   border-radius: 8px;
+}
+
+:global(.photo-gallery) {
+  cursor: grab;
+  user-select: none;
+}
+:global(.photo-gallery img) {
+  -webkit-user-drag: none;
+}
+
+:global(.photo-gallery.dragging) {
+  cursor: grabbing;
 }
 
 @media (min-width: 900px) {
@@ -271,5 +282,38 @@ const productsHref = isJapanese ? "/ja/product/" : "/product/";
     <footer>
       © 2026 FAIRHOG
     </footer>
+
+    <script>
+      const gallery = document.querySelector(".photo-gallery");
+
+      if (gallery) {
+        let dragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+
+        gallery.addEventListener("mousedown", (e) => {
+          if (e.button !== 0) return;
+
+          dragging = true;
+          startX = e.pageX;
+          startScrollLeft = gallery.scrollLeft;
+          gallery.classList.add("dragging");
+        });
+
+        window.addEventListener("mouseup", () => {
+          dragging = false;
+          gallery.classList.remove("dragging");
+        });
+
+        gallery.addEventListener("mousemove", (e) => {
+          if (!dragging) return;
+
+          e.preventDefault();
+          gallery.scrollLeft =
+            startScrollLeft - (e.pageX - startX);
+        });
+      }
+  </script>
+
   </body>
 </html>
